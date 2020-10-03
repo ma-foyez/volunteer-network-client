@@ -1,0 +1,23 @@
+.navbar-light .navbar-nav .nav-link{
+    margin-right: 25px;
+    font-weight: bold;
+    font-size: 17px;
+    z-index: 999;
+    width: 100%;
+}
+.navbar-light .navbar-nav .nav-link .items{
+    color: rgb(105, 105, 105);
+}
+.navbar-light .navbar-nav .nav-link .items:hover{
+    text-decoration: none;
+}
+.navbar-light .navbar-brand, .navbar-light .navbar-toggler{
+    z-index: 999;
+}
+.navbar-light .navbar-brand img{
+    width: 210px;
+    z-index: 999;
+}                    
+.btn{
+    color: white!important;
+}

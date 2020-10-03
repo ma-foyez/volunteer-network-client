@@ -1,0 +1,12 @@
+.event-title{
+    text-transform: capitalize;
+    color: #FF7044;
+    font-weight: 800;
+}
+.event-date{
+    color: #207FEE;
+    font-weight: bold;
+}
+.cancel-btn{
+    padding: 5px 20px!important;
+}

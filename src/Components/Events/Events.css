@@ -1,0 +1,24 @@
+.event-card{
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.eventTitle{
+    background-color: #FF7044;
+    position: absolute;
+    bottom: -3%;
+    left: 5%;
+    width: 90%;
+    /* padding: 10px 5px; */
+    height: 5rem;
+    z-index: 999;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 5px;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: white;
+    transition: 0.5s ease-in-out;
+}
+.event-card:hover .eventTitle{
+    background-color: #0084FF;
+}
