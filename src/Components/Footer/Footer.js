@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="bg-light py-3 mt-5 footer">
             <div className="container pt-5">
-                <div className="row footer-top py-5">
+                <div className="row footer-top py-2">
                     <div className="col-md-4 mb-5">
                         <img src={logo} className="w-75" alt="Volunteer Network" />
                     </div>

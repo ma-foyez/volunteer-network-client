@@ -56,6 +56,10 @@ body {
     color: #0084FF;
     font-weight: bold;
   }
+  .length{
+    color: #FF7044;
+    font-weight: bold;
+  }
   .or-btn{
     background-color: #FF7044!important;
     padding: 5px 20px!important;

@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import './LoadVolunteerActivities.css'
+import { Button, Modal } from 'react-bootstrap';
+import logo from '../../all-image/logos/Group 1329.png'
+
 const LoadVolunteerActivities = (props) => {
     const { eventTitle, eventBanner, eventDate, _id } = props.activities;
+    const [showDelete, setShowDelete] = useState(false);
 
 
-    const handleDeleteActivities = (event) => {
+    const handleDeleteActivities = () => {
         console.log(_id)
         fetch('http://localhost:5000/delete?id=' + _id, {
             method: 'DELETE',
@@ -17,10 +21,14 @@ const LoadVolunteerActivities = (props) => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    alert('Delected one event');
+                    setShowDelete(false);
                 }
             })
     }
+
+
+    const handleDeleteHide = () => setShowDelete(false);
+    const handleDeleteShow = () => setShowDelete(true);
     return (
         <>
             <div className="col-md-6" id="event-delete">
@@ -32,11 +40,22 @@ const LoadVolunteerActivities = (props) => {
                         <div className="col-6 pt-3">
                             <h4 className="event-title">{eventTitle}</h4>
                             <h6 className="event-date">{moment(eventDate.toString()).format("MMMM Do, YYYY")}</h6>
-                            <button className="btn btn-secondary cancel-btn float-right mt-5" onClick={handleDeleteActivities} id="event-delete">Cancel</button>
+                            <button className="btn btn-secondary cancel-btn float-right mt-5" onClick={handleDeleteShow}>Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Modal show={showDelete} onHide={handleDeleteHide}>
+                <Modal.Header closeButton>
+                    <Modal.Title className="modal-logo"> <img src={logo} alt="" /> </Modal.Title>
+                </Modal.Header>
+                <Modal.Body> <h3 className="text-danger text-center">Are You Sure To Delete?</h3> </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={() => handleDeleteActivities()}> Confirm Delete </Button>
+                    <Button variant="secondary" onClick={handleDeleteHide}> Cancel </Button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );

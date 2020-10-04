@@ -11,7 +11,7 @@ const VolunteerActivities = () => {
             .then(res => res.json())
             .then(data => setVolunteerActivies(data))
     }, [])
-
+   
     return (
         <>
             <div className="container mt-4">

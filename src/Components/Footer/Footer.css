@@ -14,10 +14,6 @@ footer li:hover{
     text-decoration: none;
     color:#FF7044;
 }
-.bottom-manu{
-    display:flex;
-    float:right;
-}
 .footer{
     text-align: center;
 }

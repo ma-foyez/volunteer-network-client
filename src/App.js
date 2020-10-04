@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import Header from './Components/Header/Header';
-import AdminPanel from './Components/AdminPanel/AdminPanel'
+import AdminPanel from './Components/Dashboard/AdminPanel/AdminPanel'
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +15,7 @@ import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import VolunteerActivities from './Components/VolunteerActivities/VolunteerActivities';
 import Footer from './Components/Footer/Footer';
+import NotFound from './Components/NotFound/NotFound';
 
 
 export const userContext = createContext();
@@ -48,6 +49,9 @@ function App() {
           <PrivateRoute path="/volunteerActivities">
             <VolunteerActivities />
           </PrivateRoute>
+          <Route path="/*">
+            <NotFound />
+          </Route>
         </Switch>
         <Footer />
       </Router>
