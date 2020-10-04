@@ -1,0 +1,23 @@
+footer {
+    clip-path: polygon(0 0, 100% 12%, 100% 100%, 0% 100%);
+}
+footer  li{
+    color: #3a3a3a;
+    display: block;
+    line-height: 2;
+    font-weight: bold;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+
+footer li:hover{
+    text-decoration: none;
+    color:#FF7044;
+}
+.bottom-manu{
+    display:flex;
+    float:right;
+}
+.footer{
+    text-align: center;
+}

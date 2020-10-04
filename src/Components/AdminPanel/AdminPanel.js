@@ -25,9 +25,7 @@ const AdminPanel = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data) {
-                        console.log(data);
                         alert("New Event added successfully");
                     }
                 })
@@ -132,7 +130,7 @@ const AdminPanel = () => {
                                                         <label for="exampleFormControlInput1">Banner URL</label>
                                                         <input type="text" class="form-control" id="eventBannerURL" placeholder="Host your image in server and input image url" />
                                                     </div>
-                                                    <input type="button" className="btn btn-primary float-right" value="Submit" onClick={handleAddEvent} />
+                                                    <input type="button" className="btn btn-primary float-right" value="Submit" onClick={() => handleAddEvent()} />
                                                 </div>
                                             </div>
                                         </form>

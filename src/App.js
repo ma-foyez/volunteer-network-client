@@ -14,6 +14,7 @@ import RegisterVolunteer from './Components/RegisterVolunteer/RegisterVolunteer'
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import VolunteerActivities from './Components/VolunteerActivities/VolunteerActivities';
+import Footer from './Components/Footer/Footer';
 
 
 export const userContext = createContext();
@@ -48,6 +49,7 @@ function App() {
             <VolunteerActivities />
           </PrivateRoute>
         </Switch>
+        <Footer />
       </Router>
 
 
