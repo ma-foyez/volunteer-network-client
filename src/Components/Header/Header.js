@@ -8,7 +8,6 @@ const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
     const handleLogOut = () => {
-        localStorage.removeItem('user')
         setLoggedInUser({})
     }
     return (
@@ -26,7 +25,7 @@ const Header = () => {
                         <Nav.Link><Link className="items" to="/donation">Donation</Link></Nav.Link>
                         <Nav.Link><Link className="items" to="/events">Events</Link></Nav.Link>
                         <Nav.Link><Link className="items" to="/blog">Blog</Link></Nav.Link>
-                        <Nav.Link><Link className="items btn btn-primary" to="/volunteerActivities">{ !loggedInUser ? 'Login' : 'Volunteer'} </Link></Nav.Link>
+                        <Nav.Link><Link className="items btn btn-primary" to="/volunteerActivities">{ loggedInUser.isSignedIn === true ? 'Profile' : 'Login' }</Link></Nav.Link>
                         <Nav.Link><button className="items btn btn-danger" onClick={handleLogOut}>Signout </button></Nav.Link>
                         <Nav.Link><Link className="items btn btn-dark" to="/admin">Admin</Link></Nav.Link>
                     </Nav>
