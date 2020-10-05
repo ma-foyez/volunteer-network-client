@@ -5,13 +5,13 @@ import google from '../../all-image/logos/google.png'
 import { userContext } from '../../App';
 import { initializeLoginFramework, handleGoogleSignIn, handleSignOut } from './LoginManager';
 import { useHistory, useLocation } from 'react-router-dom';
-
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
     //handle sign up with google
+
     const [user, setUser] = useState({
         isSignedIn: false,
         name: '',
@@ -28,6 +28,7 @@ const Login = () => {
                 handleResponse(res, true);
             })
     }
+
     // handle sign out
     const signOut = () => {
         handleSignOut()
@@ -37,13 +38,14 @@ const Login = () => {
     }
 
     const handleResponse = (res, redirect) => {
-        setUser(res);
+        
+        localStorage.setItem('user', JSON.stringify(res));
+        setUser(res)
         setLoggedInUser(res);
-        if(redirect){
+        if (redirect) {
             history.replace(from);
         }
     }
-
     return (
         <>
             <div className="container mt-3">

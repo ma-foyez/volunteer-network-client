@@ -7,6 +7,10 @@ import { userContext } from '../../App';
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
+    const handleLogOut = () => {
+        localStorage.removeItem('user')
+        setLoggedInUser({})
+    }
     return (
         <>
             <Navbar bg="light" expand="lg">
@@ -22,8 +26,8 @@ const Header = () => {
                         <Nav.Link><Link className="items" to="/donation">Donation</Link></Nav.Link>
                         <Nav.Link><Link className="items" to="/events">Events</Link></Nav.Link>
                         <Nav.Link><Link className="items" to="/blog">Blog</Link></Nav.Link>
-                        <Nav.Link><Link className="items btn btn-primary" to="/volunteerActivities">Login </Link></Nav.Link>
-                        <Nav.Link><Link className="items btn btn-primary" onClick={() => setLoggedInUser({})}>Signout </Link></Nav.Link>
+                        <Nav.Link><Link className="items btn btn-primary" to="/volunteerActivities">{ !loggedInUser ? 'Login' : 'Volunteer'} </Link></Nav.Link>
+                        <Nav.Link><button className="items btn btn-danger" onClick={handleLogOut}>Signout </button></Nav.Link>
                         <Nav.Link><Link className="items btn btn-dark" to="/admin">Admin</Link></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

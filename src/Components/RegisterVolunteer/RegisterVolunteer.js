@@ -20,7 +20,7 @@ const RegisterVolunteer = (props) => {
     const { volunteerID } = useParams();
     const [singleEvent, setSingleEvent] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/singleEvent/${volunteerID}`)
+        fetch(`https://stark-gorge-33129.herokuapp.com/singleEvent/${volunteerID}`)
             .then(res => res.json())
             .then(data => setSingleEvent(data));
 
@@ -43,7 +43,7 @@ const RegisterVolunteer = (props) => {
         if (userExperience === '') {
             alert('Please share your feelings with us.')
         } else {
-            fetch('http://localhost:5000/registerVolunteer', {
+            fetch('https://stark-gorge-33129.herokuapp.com/registerVolunteer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(postUserInfo)

@@ -1,4 +1,3 @@
-import { Accordion, Button, Card } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import './TopContainer.css'
 import Events from '../Events/Events';
@@ -6,7 +5,7 @@ const TopContainer = () => {
     const [event, setEvent] = useState([]);
     // load all events data 
     useEffect(() => {
-        fetch('http://localhost:5000/AllEvent')
+        fetch('https://stark-gorge-33129.herokuapp.com/AllEvent')
             .then(res => res.json())
             .then(data => setEvent(data));
     }, [])
@@ -30,7 +29,7 @@ const TopContainer = () => {
                 <div className="container mt-3">
                     <div className="row">
                         {
-                            event.map(event => <Events event={event}></Events>)
+                            event.map(event => <Events event={event} key={event._id}></Events>)
                         }
                     </div>
                 </div>

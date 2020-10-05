@@ -1,29 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Accordion, Button, Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Accordion, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarPlus, faChartLine, faCloudMeatball, faCloudUploadAlt, faPlusCircle, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarPlus, faChartLine, faPlusCircle, faUsers } from '@fortawesome/free-solid-svg-icons'
 import './AdminPanel.css'
 import VolunteerManager from '../VolunteerManager/VolunteerManager';
 import EventManager from '../EventManager/EventManager';
 import AddNewEvent from '../AddNewEvent/AddNewEvent';
 
 const AdminPanel = () => {
+    
     // load all volunteer data
     const [volunteer, setVolunteer] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/AllVolunteer')
+        fetch('https://stark-gorge-33129.herokuapp.com/AllVolunteer')
             .then(res => res.json())
             .then(data => setVolunteer(data))
-    }, [])
+    }, [volunteer])
 
     // load all event data in dashboard
     const [event, setEvent] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/AllEvent')
+        fetch('https://stark-gorge-33129.herokuapp.com/AllEvent')
             .then(res => res.json())
             .then(data => setEvent(data))
-    }, [])
+    }, [event]);
+    // volunteer info
+    const filterVolunteer = (id)=>{
+        const newVolunteer = volunteer.filter(volunteer => volunteer._id !== id);
+        setVolunteer(newVolunteer);
+    }
+    // filter events 
+    const filterEvent = (id)=>{
+        const newEvent = event.filter(event => event._id !== id);
+        setEvent(newEvent);
+    }
     return (
         <>
             <Accordion defaultActiveKey="0">
@@ -56,7 +67,7 @@ const AdminPanel = () => {
                                             </thead>
                                             <tbody id="tbody">
                                                 {
-                                                    volunteer.map(data => <VolunteerManager data={data}></VolunteerManager>)
+                                                    volunteer.map(data => <VolunteerManager data={data} filterVolunteer={filterVolunteer}></VolunteerManager>)
                                                 }
                                             </tbody>
                                         </table>
@@ -81,7 +92,7 @@ const AdminPanel = () => {
                                             </thead>
                                             <tbody id="tbody">
                                                 {
-                                                    event.map(data => <EventManager event={data}></EventManager>)
+                                                    event.map(data => <EventManager event={data} filterEvent={filterEvent}></EventManager>)
                                                 }
                                             </tbody>
                                         </table>

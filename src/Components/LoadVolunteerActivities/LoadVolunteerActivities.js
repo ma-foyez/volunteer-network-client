@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import './LoadVolunteerActivities.css'
 import { Button, Modal } from 'react-bootstrap';
@@ -10,8 +10,7 @@ const LoadVolunteerActivities = (props) => {
 
 
     const handleDeleteActivities = () => {
-        console.log(_id)
-        fetch('http://localhost:5000/delete?id=' + _id, {
+        fetch('https://stark-gorge-33129.herokuapp.com/deleteVolunteer?id=' + _id, {
             method: 'DELETE',
             header: {
                 'Accept': 'application/json',
@@ -22,6 +21,7 @@ const LoadVolunteerActivities = (props) => {
             .then(data => {
                 if (data) {
                     setShowDelete(false);
+                    props.filterActivities(_id)
                 }
             })
     }

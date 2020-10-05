@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './VolunteerManager.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
@@ -6,8 +6,14 @@ import { Button, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import logo from '../../../all-image/logos/Group 1329.png'
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
+import { userContext } from '../../../App';
 
 const VolunteerManager = (props) => {
+    console.log(props)
+    const history = useHistory()
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
     const { name, email, eventDate, eventTitle, _id } = props.data;
 
     const [showDelete, setShowDelete] = useState(false);
@@ -23,7 +29,7 @@ const VolunteerManager = (props) => {
 
     const handleDeleteVolunteer = () => {
         console.log(_id)
-        fetch('http://localhost:5000/deleteVolunteer?id=' + _id, {
+        fetch('https://stark-gorge-33129.herokuapp.com/deleteVolunteer?id=' + _id, {
             method: 'DELETE',
             header: {
                 'Accept': 'application/json',
@@ -34,7 +40,7 @@ const VolunteerManager = (props) => {
             .then(data => {
                 if (data) {
                     setShowDelete(false);
-                    window.location.reload();
+                    props.filterVolunteer(_id);
                 }
             })
     }
@@ -47,7 +53,7 @@ const VolunteerManager = (props) => {
 
         const volunteerInfo = { name, email, eventTitle, eventDate }
 
-        fetch('http://localhost:5000/updateVolunteerInfo?id=' + _id, {
+        fetch('https://stark-gorge-33129.herokuapp.com/updateVolunteerInfo?id=' + _id, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(volunteerInfo)
@@ -55,10 +61,11 @@ const VolunteerManager = (props) => {
             .then(res => res.json())
             .then(data => {
                 setShowUpdate(false)
-                window.location.reload();
+               
+                
             })
     }
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit} = useForm();
     const onSubmit = data => console.log(data);
     return (
         <>

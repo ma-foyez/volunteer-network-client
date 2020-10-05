@@ -16,7 +16,7 @@ const AddNewEvent = () => {
         if (eventTitle === '' || description === '' || eventDate === '' || eventTitle === '') {
             alert('Please insert a valid event details')
         } else {
-            fetch('http://localhost:5000/addEvent', {
+            fetch('https://stark-gorge-33129.herokuapp.com/addEvent', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(evnetInfo)

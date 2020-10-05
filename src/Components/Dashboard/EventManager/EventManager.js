@@ -25,7 +25,7 @@ const EventManager = (props) => {
     //handle delete event
     const handleDeleteEvent = (e) => {
         console.log(_id)
-        fetch('http://localhost:5000/deleteEvent?id=' + _id, {
+        fetch('https://stark-gorge-33129.herokuapp.com/deleteEvent?id=' + _id, {
             method: 'DELETE',
             header: {
                 'Accept': 'application/json',
@@ -36,7 +36,7 @@ const EventManager = (props) => {
             .then(data => {
                 if (data) {
                     setShowDelete(false);
-                    window.location.reload();
+                    props.filterEvent(_id)
                 }
             })
     }
@@ -49,7 +49,7 @@ const EventManager = (props) => {
 
         const updateEventInfo = { eventTitle, eventDate, description }
 
-        fetch('http://localhost:5000/updateEvent?id=' + _id, {
+        fetch('https://stark-gorge-33129.herokuapp.com/updateEvent?id=' + _id, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updateEventInfo)

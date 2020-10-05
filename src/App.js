@@ -1,11 +1,10 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Header from './Components/Header/Header';
 import AdminPanel from './Components/Dashboard/AdminPanel/AdminPanel'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,9 +36,6 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          {/* <Route path="/admin">
-            <AdminPanel />
-          </Route> */}
           <PrivateRoute path="/registerVolunteer/:volunteerID">
             <RegisterVolunteer />
           </PrivateRoute>
