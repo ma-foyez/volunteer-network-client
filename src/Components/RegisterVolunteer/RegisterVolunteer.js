@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import logo from '../../all-image/logos/Group 1329.png'
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegisterVolunteer = (props) => {
+    const history = useHistory()
     const classes = useStyles();
     const { volunteerID } = useParams();
     const [singleEvent, setSingleEvent] = useState({})
@@ -50,11 +51,13 @@ const RegisterVolunteer = (props) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data) {
                         console.log(data);
                         alert("Your Registration has been successfully complate.");
+                        history.replace('/home')
                     }
+                   
+                   
                 })
         }
     }

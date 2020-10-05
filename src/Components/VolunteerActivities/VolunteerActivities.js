@@ -30,7 +30,7 @@ const VolunteerActivities = () => {
                 </div>
                 <h2 className="text-center mb-3 activity">
                     {
-                        volunteerActivities.length > 0 ? 'Your Current Activities Below Here' : 'You have not yet joined any programs.'
+                        volunteerActivities.length > 0 ? <span>Your Current Activities - {volunteerActivities.length}</span> : 'You have not yet joined any programs.'
                     }
                 </h2>
                 <div className="row mt-5">
