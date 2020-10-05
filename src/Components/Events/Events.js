@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Events.css'
 const Events = ({ event }) => {
-    console.log(event._id)
     return (
         <>
             <div className="col-md-3 mb-3 event-card">

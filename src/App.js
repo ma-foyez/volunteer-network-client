@@ -37,15 +37,15 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/admin">
+          {/* <Route path="/admin">
             <AdminPanel />
-          </Route>
+          </Route> */}
           <PrivateRoute path="/registerVolunteer/:volunteerID">
             <RegisterVolunteer />
           </PrivateRoute>
-          {/* <PrivateRoute path="/admin">
+          <PrivateRoute path="/admin">
             <AdminPanel />
-          </PrivateRoute> */}
+          </PrivateRoute>
           <PrivateRoute path="/volunteerActivities">
             <VolunteerActivities />
           </PrivateRoute>

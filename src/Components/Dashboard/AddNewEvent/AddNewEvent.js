@@ -1,7 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router-dom';
 const AddNewEvent = () => {
+    const history = useHistory()
     // handle add event
     const handleAddEvent = () => {
         const eventTitle = document.getElementById('eventTitle').value;
@@ -23,6 +25,7 @@ const AddNewEvent = () => {
                 .then(data => {
                     if (data) {
                         alert("New Event added successfully");
+                        history.replace()
                     }
                 })
         }
